@@ -52,7 +52,7 @@
       </div>
     </div>
   </div>
-  <div class="modal bg-secondary bg-opacity-50" ref="modal" tabindex="-1" @click="closeModal()">
+  <div class="modal bg-secondary bg-opacity-50" tabindex="-1" @click="closeModal()">
     <div class="modal-dialog h-100 d-flex align-items-center justify-content-center">
       <div class="modal-content">
         <div class="modal-header">
@@ -73,24 +73,22 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 export default {
   name: 'portfolioComponent',
-  data() {
-    return {
-      src1: '/src/components/icons/poert1.png',
-      src2: '/src/components/icons/port2.png',
-      src3: '/src/components/icons/port3 (1).png',
-    }
-  },
-  methods: {
-    openModal(src1) {
-      document.querySelector('.modal img').src = src1
-      this.$refs.modal.classList.add('d-block')
-    },
+  setup() {
+    let src1 = ref('/src/components/icons/poert1.png')
+    let src2 = ref('/src/components/icons/port2.png')
+    let src3 = ref('/src/components/icons/port3 (1).png')
 
-    closeModal() {
-      this.$refs.modal.classList.remove('d-block')
-    },
+    const openModal = (portSrc) => {
+      document.querySelector('.modal img').src = portSrc
+      document.querySelector('.modal').classList.add('d-block')
+    }
+    const closeModal = () => {
+      document.querySelector('.modal').classList.remove('d-block')
+    }
+    return { src1, src2, src3, openModal, closeModal }
   },
 }
 </script>

@@ -9,12 +9,12 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 export default {
   name: 'homeComponent',
-  data() {
-    return {
-      imgSrc: '/src/components/icons/avataaars.svg',
-    }
+  setup() {
+    let imgSrc = ref('/src/components/icons/avataaars.svg')
+    return { imgSrc }
   },
 }
 </script>
